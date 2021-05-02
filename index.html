@@ -35,18 +35,18 @@ function saveNote() {
     else{
          // calling our noteId function from index.js to a new index
         let id = noteId();
-        console.log(id)
+        
 
         //getting all our existing notes from local storage
         let allNotes = getAllNotes();
-        console.log(allNotes)
+        
 
         // if there are no note objects present we are going to create one 
         if (!allNotes) 
         {
             // set allNotes to an empty object 
             allNotes = {}
-            console.log("allnotes are not ther ")
+          
         }
 
         // assign object key(id) / value(note text) pair for new enrty 
