@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    <title>Note Taker App</title>
+</head>
+<body>
+    <div class="front-page">
+        <h2 class="header">Note Taker App</h2>
+            <textarea id="note" name="note-text" class="note-area"></textarea>
+            <br>
+            <button id="submit" onclick="saveNote()" class="submit">Save Note</button>
+        <div class="notes-link">
+            <a href="index2.html" >View Notes</a>
+        </div> 
+    </div>
+</body>
+
+<script>
+
+let textElement = document.getElementById("note");
+var checkEmpty;
+
+function saveNote() {
+    
+    
+    
+    //check for empty entry text 
+    if (textElement.value == "")
+    {
+        alert("the text is empty")
+        
+    }
+    else{
+         // calling our noteId function from index.js to a new index
+        let id = noteId();
+        console.log(id)
+
+        //getting all our existing notes from local storage
+        let allNotes = getAllNotes();
+        console.log(allNotes)
+
+        // if there are no note objects present we are going to create one 
+        if (!allNotes) 
+        {
+            // set allNotes to an empty object 
+            allNotes = {}
+            console.log("allnotes are not ther ")
+        }
+
+        // assign object key(id) / value(note text) pair for new enrty 
+        // (this will go on even if there are elements in our current Notes) 
+        allNotes[id] =  textElement.value
+        
+        //local storage only saves strings 
+        //convert key value pairs to strings and set to local storage
+        localStorage.setItem('notes',JSON.stringify(allNotes))
+        // let storedNotes = localStorage.getItem('notes')
+        //  console.log(storedNotes);
+
+        
+    }
+      
+}
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+
+<div class="second-page">
+    <ol id="notes-list">
+
+    </ol>
+</div>
+
+<a href="index.html"><h3>Back</h3></a>
+
+
+<script>
+    console.log('hello')
+
+    // This will render the notes on a separate page on our site 
+    function displayNotes (){
+
+        let allNotes = getAllNotes();
+        console.log(allNotes);
+        // set noteText to array of values from note object
+        
+        let noteText = Object.values(allNotes)
+        // accessing and altering our <ol> tag in HTML
+        let noteList = document.getElementById('notes-list')
+
+        //for each element in note values array,
+        // we are going to execute a function(callback) 
+        //to create an li element
+         noteText.forEach(note => {
+            //  creating <li> element for 
+             let item = document.createElement('li')
+            //  setting <li> element innerHTML to current notevValue element in loop
+             item.innerHTML = note 
+             //adding <li> child to end of <ol> element
+             noteList.appendChild(item)
+
+         })
+        
+    }
+    // we have to call the display notes function 
+    displayNotes ()
+
+
+</script>
